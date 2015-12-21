@@ -33,6 +33,17 @@ namespace WebApiTest.Controllers
             return Ok(prodct);
         }
 
+        [Route("api/{controller}/name={name}")]
+        public IHttpActionResult GetByName(string name)
+        {
+            var prodct = products.FirstOrDefault(p => p.Name == name);
+            if (prodct == null)
+            {
+                return NotFound();
+            }
+            return Ok(prodct);
+        }
+
     }
 
     public class Product
